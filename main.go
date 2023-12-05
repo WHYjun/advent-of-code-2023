@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/WHYjun/advent-of-code-2023/day01"
+	"github.com/WHYjun/advent-of-code-2023/day02"
 	"github.com/WHYjun/advent-of-code-2023/utils"
 )
 
@@ -17,9 +18,9 @@ func main() {
 	case 1:
 		fmt.Printf("part 1: %d\n", day01.Part1(utils.MustReadFile(day)))
 		fmt.Printf("part 2: %d\n", day01.Part2(utils.MustReadFile(day)))
-	// case 2:
-	// 	fmt.Printf("part 1: %d\n", day02.Part1(utils.MustReadFile(day)))
-	// 	fmt.Printf("part 2: %d\n", day02.Part2(utils.MustReadFile(day)))
+	case 2:
+		fmt.Printf("part 1: %d\n", day02.Part1(utils.MustReadFile(day)))
+		fmt.Printf("part 2: %d\n", day02.Part2(utils.MustReadFile(day)))
 	// case 3:
 	// 	fmt.Printf("part 1: %d\n", day03.Part1(utils.MustReadFile(day)))
 	// 	fmt.Printf("part 2: %d\n", day03.Part2(utils.MustReadFile(day)))

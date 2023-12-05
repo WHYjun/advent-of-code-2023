@@ -5,7 +5,7 @@ import (
 )
 
 func Part1(input string) int {
-	lines := strings.Split(input, "\n")
+	lines := strings.Split(input, "\r\n")
 
 	sum := 0
 	for _, line := range lines {
@@ -19,7 +19,7 @@ func Part1(input string) int {
 }
 
 func Part2(input string) int {
-	lines := strings.Split(input, "\n")
+	lines := strings.Split(input, "\r\n")
 	sum := 0
 	for _, line := range lines {
 		sum += firstNumberOrDigit(line)*10 + lastNumberOrDigit(line)

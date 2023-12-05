@@ -7,3 +7,24 @@
 * [Day 01](https://adventofcode.com/2023/day/1)
 * [Day 02](https://adventofcode.com/2023/day/2)
 * [Day 03](https://adventofcode.com/2023/day/3)
+
+## Solution Template
+
+```go
+package day
+
+import (
+	"strings"
+)
+
+func Part1(input string) int {
+	lines := strings.Split(input, "\r\n")
+	return len(lines)
+}
+
+func Part2(input string) int {
+	lines := strings.Split(input, "\r\n")
+	return len(lines)
+}
+
+```
