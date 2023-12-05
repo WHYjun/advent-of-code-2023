@@ -15,7 +15,7 @@ func Part1(input string) int {
 	sum := 0
 	lines := strings.Split(input, "\r\n")
 	for _, line := range lines {
-		if playGame(line) {
+		if playGameOne(line) {
 			sum += getGameID(line)
 		}
 	}
@@ -24,7 +24,11 @@ func Part1(input string) int {
 
 func Part2(input string) int {
 	lines := strings.Split(input, "\r\n")
-	return len(lines)
+	sum := 0
+	for _, line := range lines {
+		sum += playGameTwo(line)
+	}
+	return sum
 }
 
 func getGameID(s string) int {
@@ -34,7 +38,7 @@ func getGameID(s string) int {
 	return id
 }
 
-func playGame(s string) bool {
+func playGameOne(s string) bool {
 	sets := strings.Split(strings.Split(s, ":")[1], ";")
 	for _, set := range sets {
 		count := CubeCounts{}
@@ -63,4 +67,37 @@ func isValidGame(count CubeCounts) bool {
 		Blue:  14,
 	}
 	return count.Red <= maxCount.Red && count.Green <= maxCount.Green && count.Blue <= maxCount.Blue
+}
+
+func playGameTwo(s string) int {
+	minCubeCounts := CubeCounts{
+		Red:   -1,
+		Green: -1,
+		Blue:  -1,
+	}
+	sets := strings.Split(strings.Split(s, ":")[1], ";")
+	for _, set := range sets {
+		count := CubeCounts{}
+		blocks := strings.Split(set, ",")
+		for _, block := range blocks {
+			block = strings.ReplaceAll(block, " ", "")
+			if strings.HasSuffix(block, "red") {
+				count.Red, _ = strconv.Atoi(strings.ReplaceAll(block, "red", ""))
+			} else if strings.HasSuffix(block, "green") {
+				count.Green, _ = strconv.Atoi(strings.ReplaceAll(block, "green", ""))
+			} else if strings.HasSuffix(block, "blue") {
+				count.Blue, _ = strconv.Atoi(strings.ReplaceAll(block, "blue", ""))
+			}
+		}
+		if count.Red > minCubeCounts.Red {
+			minCubeCounts.Red = count.Red
+		}
+		if count.Blue > minCubeCounts.Blue {
+			minCubeCounts.Blue = count.Blue
+		}
+		if count.Green > minCubeCounts.Green {
+			minCubeCounts.Green = count.Green
+		}
+	}
+	return minCubeCounts.Blue * minCubeCounts.Green * minCubeCounts.Red
 }
