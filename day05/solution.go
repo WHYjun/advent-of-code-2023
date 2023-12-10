@@ -17,7 +17,7 @@ type Map struct {
 	HumidityToLocation    map[int]int
 }
 
-func _Part1(input string) int {
+func Part1(input string) int {
 	lines := strings.Split(input, "\r\n")
 	m := parseMap(lines)
 	var soil, fertilizer, water, light, temperature, humidity, location int
